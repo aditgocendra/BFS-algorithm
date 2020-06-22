@@ -1,0 +1,291 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://assets/tileset/tileset.png" type="Texture" id=1]
+[ext_resource path="res://src/Map/Map.gd" type="Script" id=2]
+[ext_resource path="res://src/Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/shadow.png" type="Texture" id=4]
+[ext_resource path="res://src/Enemy/Enemy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/Warp/Warp.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/tileset/map labirin.png" type="Texture" id=7]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
+
+[sub_resource type="TileSet" id=2]
+0/name = "tileset.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 128, 128 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shapes = [  ]
+0/z_index = 0
+1/name = "tileset.png 1"
+1/texture = ExtResource( 1 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 128, 0, 128, 128 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shapes = [  ]
+1/z_index = 0
+2/name = "tileset.png 2"
+2/texture = ExtResource( 1 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 128, 128, 128 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shapes = [  ]
+2/z_index = 0
+3/name = "tileset.png 3"
+3/texture = ExtResource( 1 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 128, 128, 128, 128 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shapes = [  ]
+3/z_index = 0
+4/name = "tileset.png 4"
+4/texture = ExtResource( 1 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 640, 384, 128, 128 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+4/z_index = 0
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 512.58, 22.4128 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 151.49, 22.6704 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 87.8666, 22.9255 )
+
+[sub_resource type="ConvexPolygonShape2D" id=6]
+points = PoolVector2Array( 0, 0, 128, 0, 128, 0, 0, 0 )
+
+[sub_resource type="TileSet" id=7]
+0/name = "map labirin.png 0"
+0/texture = ExtResource( 7 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 128, 128 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shapes = [  ]
+0/z_index = 0
+1/name = "map labirin.png 1"
+1/texture = ExtResource( 7 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 384, 128, 128, 128 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 6 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 0
+
+[node name="Map" type="Node2D"]
+z_index = -1
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_vertical_guides_": [ 1095.55 ]
+}
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 2 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 1, 1, 0, 2, 0, 0, 3, 1, 0, 4, 1, 0, 5, 0, 0, 6, 1, 0, 7, 0, 0, 65536, 2, 0, 65537, 3, 0, 65538, 2, 0, 65539, 3, 0, 65540, 3, 0, 65541, 2, 0, 65542, 3, 0, 65543, 2, 0, 131072, 2, 0, 131073, 3, 0, 131074, 2, 0, 131075, 3, 0, 131076, 3, 0, 131077, 2, 0, 131078, 3, 0, 131079, 2, 0, 196608, 2, 0, 196609, 3, 0, 196610, 2, 0, 196611, 3, 0, 196612, 3, 0, 196613, 2, 0, 196614, 3, 0, 196615, 2, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 955.639, 191.095 )
+z_index = 1
+
+[node name="Light2D" type="Light2D" parent="Player"]
+visible = false
+scale = Vector2( 5, 5 )
+texture = ExtResource( 4 )
+mode = 2
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2( 0, 3.89606 )
+current = true
+process_mode = 0
+limit_left = 0
+limit_top = 0
+limit_right = 1024
+limit_bottom = 512
+limit_smoothed = true
+smoothing_enabled = true
+smoothing_speed = 12.0
+
+[node name="Enemy" parent="." instance=ExtResource( 5 )]
+position = Vector2( 64, 53.2613 )
+
+[node name="GroupWall" type="Node2D" parent="."]
+
+[node name="Wall" type="StaticBody2D" parent="GroupWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroupWall/Wall"]
+position = Vector2( 512.586, -22.2791 )
+shape = SubResource( 3 )
+
+[node name="Wall2" type="StaticBody2D" parent="GroupWall"]
+position = Vector2( 0, 557.716 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroupWall/Wall2"]
+position = Vector2( 512.586, -22.2791 )
+shape = SubResource( 3 )
+
+[node name="Wall3" type="StaticBody2D" parent="GroupWall"]
+position = Vector2( 1026.33, -178.715 )
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroupWall/Wall3"]
+position = Vector2( 512.586, -22.2791 )
+shape = SubResource( 3 )
+
+[node name="Wall4" type="StaticBody2D" parent="GroupWall"]
+position = Vector2( -47.8522, -178.715 )
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroupWall/Wall4"]
+position = Vector2( 512.586, -22.2791 )
+shape = SubResource( 3 )
+
+[node name="Wall5" type="StaticBody2D" parent="GroupWall"]
+position = Vector2( -9.52264, 175.488 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroupWall/Wall5"]
+position = Vector2( 519.897, -47.8575 )
+shape = SubResource( 4 )
+
+[node name="Wall6" type="StaticBody2D" parent="GroupWall"]
+position = Vector2( -9.52264, 302.865 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroupWall/Wall6"]
+position = Vector2( 519.897, -47.8575 )
+shape = SubResource( 4 )
+
+[node name="Wall7" type="StaticBody2D" parent="GroupWall"]
+position = Vector2( -9.52264, 431.115 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroupWall/Wall7"]
+position = Vector2( 519.897, -47.8575 )
+shape = SubResource( 4 )
+
+[node name="Wall8" type="StaticBody2D" parent="GroupWall"]
+position = Vector2( -9.52264, 559.365 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroupWall/Wall8"]
+position = Vector2( 519.897, -47.8575 )
+shape = SubResource( 4 )
+
+[node name="Wall9" type="StaticBody2D" parent="GroupWall"]
+position = Vector2( -9.52264, 50.165 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroupWall/Wall9"]
+position = Vector2( 519.897, -47.8575 )
+shape = SubResource( 4 )
+
+[node name="Wall10" type="StaticBody2D" parent="GroupWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroupWall/Wall10"]
+position = Vector2( 191.018, 254.981 )
+shape = SubResource( 5 )
+
+[node name="Wall11" type="StaticBody2D" parent="GroupWall"]
+position = Vector2( 0, -127.31 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroupWall/Wall11"]
+position = Vector2( 191.018, 254.981 )
+shape = SubResource( 5 )
+
+[node name="Wall12" type="StaticBody2D" parent="GroupWall"]
+position = Vector2( 0, 128.24 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroupWall/Wall12"]
+position = Vector2( 191.018, 254.981 )
+shape = SubResource( 5 )
+
+[node name="Wall13" type="StaticBody2D" parent="GroupWall"]
+position = Vector2( 0, 255.54 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroupWall/Wall13"]
+position = Vector2( 191.018, 254.981 )
+shape = SubResource( 5 )
+
+[node name="Wall14" type="StaticBody2D" parent="GroupWall"]
+position = Vector2( -0.735077, -253.865 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroupWall/Wall14"]
+position = Vector2( 191.018, 254.981 )
+shape = SubResource( 5 )
+
+[node name="Wall15" type="StaticBody2D" parent="GroupWall"]
+position = Vector2( 640.144, -253.865 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroupWall/Wall15"]
+position = Vector2( 191.018, 254.981 )
+shape = SubResource( 5 )
+
+[node name="Wall16" type="StaticBody2D" parent="GroupWall"]
+position = Vector2( 640.144, -127.852 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroupWall/Wall16"]
+position = Vector2( 191.018, 254.981 )
+shape = SubResource( 5 )
+
+[node name="Wall17" type="StaticBody2D" parent="GroupWall"]
+position = Vector2( 640.144, -0.406372 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroupWall/Wall17"]
+position = Vector2( 191.018, 254.981 )
+shape = SubResource( 5 )
+
+[node name="Wall18" type="StaticBody2D" parent="GroupWall"]
+position = Vector2( 640.144, 127.039 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroupWall/Wall18"]
+position = Vector2( 191.018, 254.981 )
+shape = SubResource( 5 )
+
+[node name="Wall19" type="StaticBody2D" parent="GroupWall"]
+position = Vector2( 640.144, 255.917 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroupWall/Wall19"]
+position = Vector2( 191.018, 254.981 )
+shape = SubResource( 5 )
+
+[node name="Warp" parent="." instance=ExtResource( 6 )]
+position = Vector2( 58.4615, 448.516 )
+
+[node name="TileMap2" type="TileMap" parent="."]
+tile_set = SubResource( 7 )
+cell_size = Vector2( 128, 128 )
+format = 1

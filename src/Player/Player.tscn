@@ -1,0 +1,91 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://assets/player/idle/berhenti_0004.png" type="Texture" id=1]
+[ext_resource path="res://assets/player/idle/berhenti_0002.png" type="Texture" id=2]
+[ext_resource path="res://assets/player/idle/berhenti_0005.png" type="Texture" id=3]
+[ext_resource path="res://assets/player/idle/berhenti_0003.png" type="Texture" id=4]
+[ext_resource path="res://assets/player/idle/berhenti_0007.png" type="Texture" id=5]
+[ext_resource path="res://assets/player/idle/berhenti_0008.png" type="Texture" id=6]
+[ext_resource path="res://assets/player/idle/berhenti_0006.png" type="Texture" id=7]
+[ext_resource path="res://assets/player/idle/berhenti_0001.png" type="Texture" id=8]
+[ext_resource path="res://assets/player/walk/jalan_0007.png" type="Texture" id=9]
+[ext_resource path="res://assets/player/walk/jalan_0004.png" type="Texture" id=10]
+[ext_resource path="res://assets/player/walk/jalan_0005.png" type="Texture" id=11]
+[ext_resource path="res://assets/player/walk/jalan_0008.png" type="Texture" id=12]
+[ext_resource path="res://assets/player/walk/jalan_0006.png" type="Texture" id=13]
+[ext_resource path="res://assets/player/walk/jalan_0001.png" type="Texture" id=14]
+[ext_resource path="res://assets/player/walk/jalan_0003.png" type="Texture" id=15]
+[ext_resource path="res://assets/player/walk/jalan_0002.png" type="Texture" id=16]
+[ext_resource path="res://src/Player/Player.gd" type="Script" id=17]
+[ext_resource path="res://assets/controller/move_left_active_128.png" type="Texture" id=18]
+[ext_resource path="res://assets/controller/move_left_128.png" type="Texture" id=19]
+[ext_resource path="res://assets/controller/move_right_128.png" type="Texture" id=20]
+[ext_resource path="res://assets/controller/move_right_active_128.png" type="Texture" id=21]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "idle",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 16 ), ExtResource( 15 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 13 ), ExtResource( 9 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "walk",
+"speed": 10.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 21.2875, 76.1861 )
+
+[node name="Player" type="KinematicBody2D"]
+scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 17 )
+
+[node name="PlayerAnimated" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "idle"
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="Controller" type="Node" parent="."]
+
+[node name="TouchLeft" type="TouchScreenButton" parent="Controller"]
+visible = false
+position = Vector2( 0.51581, 403.791 )
+scale = Vector2( 0.5, 0.5 )
+normal = ExtResource( 19 )
+pressed = ExtResource( 18 )
+
+[node name="TouchRight" type="TouchScreenButton" parent="Controller"]
+visible = false
+position = Vector2( 128.284, 403.635 )
+scale = Vector2( 0.5, 0.5 )
+normal = ExtResource( 20 )
+pressed = ExtResource( 21 )
+
+[node name="TouchDown" type="TouchScreenButton" parent="Controller"]
+visible = false
+position = Vector2( 127.1, 443.533 )
+rotation = 1.5708
+scale = Vector2( 0.5, 0.5 )
+normal = ExtResource( 20 )
+pressed = ExtResource( 21 )
+
+[node name="TouchUp" type="TouchScreenButton" parent="Controller"]
+visible = false
+position = Vector2( 63.2566, 424.35 )
+rotation = -1.5708
+scale = Vector2( 0.5, 0.5 )
+normal = ExtResource( 20 )
+pressed = ExtResource( 21 )
+[connection signal="pressed" from="Controller/TouchLeft" to="." method="_on_TouchLeft_pressed"]
+[connection signal="released" from="Controller/TouchLeft" to="." method="_on_TouchLeft_released"]
+[connection signal="pressed" from="Controller/TouchRight" to="." method="_on_TouchRight_pressed"]
+[connection signal="released" from="Controller/TouchRight" to="." method="_on_TouchRight_released"]
+[connection signal="pressed" from="Controller/TouchDown" to="." method="_on_TouchDown_pressed"]
+[connection signal="released" from="Controller/TouchDown" to="." method="_on_TouchDown_released"]
+[connection signal="pressed" from="Controller/TouchUp" to="." method="_on_TouchUp_pressed"]
+[connection signal="released" from="Controller/TouchUp" to="." method="_on_TouchUp_released"]
